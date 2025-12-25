@@ -16,5 +16,3 @@ This is my personal portfolio website showcasing my skills, projects, and experi
 - CSS
 - JavaScript
 - (Add others like React, Bootstrap, etc.)
-
-## 📂 Project Structure
