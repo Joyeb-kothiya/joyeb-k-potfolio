@@ -6,13 +6,22 @@ import logo from "@/assets/logo.png";
 
 const navLinks = [
   { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
-  { name: "Education", href: "#education" },
   { name: "Blog", href: "#blog" },
   { name: "Contact", href: "#contact" },
 ];
+
+const smoothScrollTo = (targetId: string) => {
+  const element = document.querySelector(targetId);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
+
+const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  e.preventDefault();
+  smoothScrollTo(href);
+};
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,12 +57,13 @@ export default function Header() {
         </motion.a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
           {navLinks.map((link, index) => (
             <motion.a
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+              onClick={(e) => handleNavClick(e, link.href)}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group cursor-pointer"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
@@ -100,7 +110,8 @@ export default function Header() {
 
           <motion.a
             href="#contact"
-            className="hidden md:flex btn-primary text-sm"
+            onClick={(e) => handleNavClick(e, "#contact")}
+            className="hidden md:flex btn-primary text-sm cursor-pointer"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -132,11 +143,15 @@ export default function Header() {
                 <motion.a
                   key={link.name}
                   href={link.href}
-                  className="py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-xl transition-colors"
+                  className="py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-xl transition-colors cursor-pointer"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsMobileMenuOpen(false);
+                    setTimeout(() => smoothScrollTo(link.href), 100);
+                  }}
                 >
                   {link.name}
                 </motion.a>
