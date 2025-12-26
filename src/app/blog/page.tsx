@@ -1,5 +1,3 @@
-import ContainerComponent from '@/components/common/Container';
-import { Card } from '@/components/ui/card';
 import { BlogPageClient } from './BlogPageClient';
 import { getPublishedBlogPosts, getAllTags } from '@/lib/blog';
 import { generateMetadata as getMetadata } from '@/config/Meta';
