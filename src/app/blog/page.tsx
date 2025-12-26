@@ -1,5 +1,7 @@
 import ContainerComponent from '@/components/common/Container';
 import { Card } from '@/components/ui/card';
+import { BlogPageClient } from './BlogPageClient';
+import { getPublishedBlogPosts, getAllTags } from '@/lib/blog';
 import { generateMetadata as getMetadata } from '@/config/Meta';
 import { Metadata } from 'next';
 
@@ -15,15 +17,13 @@ export const generateMetadata = (): Metadata => {
 };
 
 export default function BlogPage() {
+  const posts = getPublishedBlogPosts();
+  const tags = getAllTags();
+
   return (
-    <ContainerComponent className="py-16">
-      <div className="space-y-8 text-center">
-        <h1 className="text-4xl font-bold">Blog</h1>
-        <Card className="mt-8 p-8 flex flex-col items-center justify-center text-center">
-          <p className="text-2xl font-semibold text-muted-foreground">Coming Soon</p>
-          <p className="text-sm text-muted-foreground mt-2">The blog has been paused — check back later.</p>
-        </Card>
-      </div>
-    </ContainerComponent>
+    <>
+      {/* Render client component with initial posts and tags */}
+      <BlogPageClient initialPosts={posts} initialTags={tags} />
+    </>
   );
 }

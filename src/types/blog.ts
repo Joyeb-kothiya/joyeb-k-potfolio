@@ -5,6 +5,7 @@ export interface BlogFrontmatter {
   tags: string[];
   date: string;
   isPublished: boolean;
+  originalUrl?: string;
 }
 
 export interface BlogPost {
