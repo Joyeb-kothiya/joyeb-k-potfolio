@@ -35,6 +35,7 @@ export const projects: Project[] = [
       { name: 'Tailwind CSS', icon: <TailwindCss key="tailwindcss" /> },
     ],
     live: 'https://ziki-code-breaker.vercel.app/',
+    github: 'https://github.com/Joyeb-kothiya/Code-Breaker.git',
     details: false,
     isWorking: true,
   },

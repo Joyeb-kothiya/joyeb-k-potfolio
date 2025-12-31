@@ -9,51 +9,55 @@ import { getPublishedBlogPosts } from '@/lib/blog';
 
 export default async function Blog() {
   const posts = getPublishedBlogPosts();
-  const latest = posts.length > 0 ? posts[0] : null;
+  const latestPosts = posts.slice(0, 2); // Get first 2 posts
 
   return (
     <Container className="mt-20">
       <SectionHeading subHeading="Featured" heading="Blogs" />
 
-      {latest ? (
-        <Card className="mt-8 p-0 overflow-hidden">
-          <div className="relative aspect-video w-full">
-            <Link href={`/blog/${latest.slug}`}>
-              <Image
-                src={latest.frontmatter.image}
-                alt={latest.frontmatter.title}
-                fill
-                className="object-cover"
-              />
-            </Link>
-          </div>
-          <div className="p-6 text-center">
-            <h3 className="text-2xl font-semibold">
-              <Link href={`/blog/${latest.slug}`}>{latest.frontmatter.title}</Link>
-            </h3>
-            <p className="text-sm text-muted-foreground mt-2">
-              {latest.frontmatter.description}
-            </p>
-            <div className="mt-4 flex items-center justify-center gap-4">
-              <Link
-                href={`/blog/${latest.slug}`}
-                className="text-sm underline underline-offset-4"
-              >
-                Read on site
-              </Link>
-              {latest.frontmatter.originalUrl && (
-                <a
-                  href={latest.frontmatter.originalUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:underline underline-offset-4"
-                >
-                  Read original
-                </a>
-              )}
-            </div>
-          </div>
-        </Card>
+      {latestPosts.length > 0 ? (
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          {latestPosts.map((post) => (
+            <Card key={post.slug} className="p-0 overflow-hidden">
+              <div className="relative aspect-video w-full">
+                <Link href={`/blog/${post.slug}`}>
+                  <Image
+                    src={post.frontmatter.image}
+                    alt={post.frontmatter.title}
+                    fill
+                    className="object-cover"
+                  />
+                </Link>
+              </div>
+              <div className="p-6 text-center">
+                <h3 className="text-xl font-semibold">
+                  <Link href={`/blog/${post.slug}`}>{post.frontmatter.title}</Link>
+                </h3>
+                <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
+                  {post.frontmatter.description}
+                </p>
+                <div className="mt-4 flex items-center justify-center gap-4">
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="text-sm underline underline-offset-4"
+                  >
+                    Read on site
+                  </Link>
+                  {post.frontmatter.originalUrl && (
+                    <a
+                      href={post.frontmatter.originalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-muted-foreground hover:underline underline-offset-4"
+                    >
+                      Read original
+                    </a>
+                  )}
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
       ) : (
         <Card className="mt-8 p-8 flex flex-col items-center justify-center text-center">
           <p className="text-2xl font-semibold text-muted-foreground">Coming Soon</p>
