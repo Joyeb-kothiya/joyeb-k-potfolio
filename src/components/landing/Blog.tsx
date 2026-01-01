@@ -9,14 +9,14 @@ import { getPublishedBlogPosts } from '@/lib/blog';
 
 export default async function Blog() {
   const posts = getPublishedBlogPosts();
-  const latestPosts = posts.slice(0, 2); // Get first 2 posts
+  const latestPosts = posts.slice(0, 4); // Get first 4 posts
 
   return (
     <Container className="mt-20">
       <SectionHeading subHeading="Featured" heading="Blogs" />
 
       {latestPosts.length > 0 ? (
-        <div className="mt-8 grid gap-6 md:grid-cols-2">
+        <div className="mt-8 grid gap-6 grid-cols-2">
           {latestPosts.map((post) => (
             <Card key={post.slug} className="p-0 overflow-hidden">
               <div className="relative aspect-video w-full">
