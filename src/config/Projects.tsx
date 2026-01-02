@@ -25,7 +25,7 @@ export const projects: Project[] = [
     title: 'Code Breaker',
     description:
       'A comprehensive platform for C++ and DFS program collections with semester-wise organized content',
-    image: '/project/code-breaker.png',
+    image: '/projects/p1.png',
     link: 'https://ziki-code-breaker.vercel.app/',
     technologies: [
       { name: 'Next.js', icon: <NextJs key="nextjs" /> },
@@ -36,6 +36,24 @@ export const projects: Project[] = [
     ],
     live: 'https://ziki-code-breaker.vercel.app/',
     github: 'https://github.com/Joyeb-kothiya/Code-Breaker.git',
+    details: false,
+    isWorking: true,
+  },
+  {
+    title: 'Ziki Easy Edit',
+    description:
+      'A user-friendly image editing application designed for quick and efficient photo enhancements and adjustments',
+    image: '/projects/p2.png',
+    link: 'https://ziki-easy-edit.vercel.app/',
+    technologies: [
+      { name: 'Next.js', icon: <NextJs key="nextjs" /> },
+      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
+      { name: 'React', icon: <ReactIcon key="react" /> },
+      { name: 'Vercel', icon: <Vercel key="vercel" /> },
+      { name: 'Tailwind CSS', icon: <TailwindCss key="tailwindcss" /> },
+    ],
+    live: 'https://ziki-easy-edit.vercel.app/',
+    github: 'https://github.com/Joyeb-kothiya/ziki-easy-edit.git',
     details: false,
     isWorking: true,
   },
