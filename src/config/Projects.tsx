@@ -1,7 +1,10 @@
 import Appwrite from '@/components/technologies/Appwrite';
 import Bun from '@/components/technologies/Bun';
+import CSS from '@/components/technologies/CSS';
 import ExpressJs from '@/components/technologies/ExpressJs';
 import Github from '@/components/technologies/Github';
+import Html from '@/components/technologies/Html';
+import JavaScript from '@/components/technologies/JavaScript';
 import MDXIcon from '@/components/technologies/MDXIcon';
 import MongoDB from '@/components/technologies/MongoDB';
 import Motion from '@/components/technologies/Motion';
@@ -54,7 +57,23 @@ export const projects: Project[] = [
     ],
     live: 'https://ziki-easy-edit.vercel.app/',
     github: 'https://github.com/Joyeb-kothiya/ziki-easy-edit.git',
-    details: false,
+    details: true,
+    isWorking: true,
+  },
+  {
+    title: 'Netflix-Clone',
+    description:
+      'A responsive replica of the Netflix interface featuring dynamic content loading, video playback headers, and a familiar user experience',
+    image: '/projects/p3.png',
+    link: 'https://joyeb-kothiya-netflix-clone.vercel.app/',
+    technologies: [
+      { name: 'HTML5', icon: <Html key="html" /> },
+      { name: 'CSS3', icon: <CSS key="css" /> },
+      { name: 'JavaScript', icon: <JavaScript key="javascript" /> },
+    ],
+    live: 'https://joyeb-kothiya-netflix-clone.vercel.app/',
+    github: 'https://github.com/Joyeb-kothiya/Netflix-Clone.git',
+    details: true,
     isWorking: true,
   },
   {

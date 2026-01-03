@@ -16,7 +16,7 @@ export default async function Blog() {
       <SectionHeading subHeading="Featured" heading="Blogs" />
 
       {latestPosts.length > 0 ? (
-        <div className="mt-8 grid gap-6 grid-cols-2">
+        <div className="mt-8 grid gap-6 grid-cols-1 md:grid-cols-2">
           {latestPosts.map((post) => (
             <Card key={post.slug} className="p-0 overflow-hidden">
               <div className="relative aspect-video w-full">

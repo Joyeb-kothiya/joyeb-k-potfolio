@@ -9,9 +9,9 @@ import { ProjectList } from '../projects/ProjectList';
 import { Card } from '../ui/card';
 
 export default function Projects() {
-  // Only show the first project (Code Breaker), rest are coming soon
-  const activeProjects = projects.slice(0, 2);
-  const comingSoonCount = projects.length - 2;
+  // Show the first three projects, rest are coming soon
+  const activeProjects = projects.slice(0, 3);
+  const comingSoonCount = projects.length - 3;
 
   return (
     <Container className="mt-20">

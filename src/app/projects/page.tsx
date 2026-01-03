@@ -21,8 +21,9 @@ export const metadata: Metadata = {
 };
 
 export default function ProjectsPage() {
-  const featured = projects.find((p) => p.title === 'Code Breaker') || projects[0];
-  const others = projects.filter((p) => p !== featured);
+  const featuredTitles = ['Code Breaker', 'Ziki Easy Edit', 'Netflix-Clone'];
+  const featured = projects.filter((p) => featuredTitles.includes(p.title));
+  const others = projects.filter((p) => !featuredTitles.includes(p.title));
 
   return (
     <ContainerComponent className="py-16">
@@ -38,10 +39,10 @@ export default function ProjectsPage() {
 
         <Separator />
 
-        {/* Featured Project */}
+        {/* Featured Projects */}
         <div>
           <h2 className="text-2xl font-semibold mb-4">Featured</h2>
-          <ProjectList projects={featured ? [featured] : []} />
+          <ProjectList projects={featured} />
         </div>
 
         <Separator />
